@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live demo: lab architecture and flow</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #0f2d4a;
+        }
+        .font-mono-code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom exact slide colors extracted from image */
+        .bg-slide-blue {
+            background-color: #eaf3f8;
+        }
+        .text-slide-dark {
+            color: #0b2f4c;
+        }
+        .bg-circle-blue {
+            background-color: #0b4f71;
+        }
+        .border-inner-card {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8">
+
+    <!-- Main Slide Canvas Frame (16:9 Aspect Ratio aspect layout) -->
+    <div class="w-full max-w-[1280px] bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col justify-between p-8 md:p-14 border border-slate-200 min-h-[720px]">
+        
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl md:text-4xl lg:text-[42px] font-extrabold text-[#0b2f4c] tracking-tight">
+                Live demo: lab architecture and flow
+            </h1>
+        </header>
+
+        <!-- Main Content Area Grid -->
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start flex-grow">
+            
+            <!-- Left Side Box Container (Light Blue Background Card) -->
+            <section class="lg:col-span-6 bg-slide-blue rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full">
+                <div>
+                    <!-- Database Title -->
+                    <h2 class="text-xl md:text-2xl font-extrabold text-[#0b2f4c] font-mono-code mb-6 tracking-wide">
+                        DMP_LAB_DB
+                    </h2>
+
+                    <!-- Inner Cards Container -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                        
+                        <!-- Inner Card 1: PAYMENTS -->
+                        <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
+                            <h3 class="text-sm font-bold text-[#0b2f4c] tracking-wider mb-4 font-mono-code uppercase">
+                                PAYMENTS
+                            </h3>
+                            <ul class="space-y-3 text-xs md:text-[13px] text-slate-700 font-medium">
+                                <li class="flex items-start">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span>
+                                        <strong class="font-mono-code font-bold text-slate-800">CUSTOMER_PAYMENTS</strong><br>
+                                        <span class="text-slate-600 font-normal">(1,000 rows, tagged)</span>
+                                    </span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span><strong class="font-mono-code font-semibold text-slate-800">IBAN</strong> column (critical tag)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span>
+                                        <strong class="font-mono-code font-bold text-slate-800">WEB_EVENTS</strong> <span class="text-slate-600 font-normal">(2,000 rows, untagged)</span>
+                                    </span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span class="font-mono-code font-bold text-slate-800">EXPORT_STAGE</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Inner Card 2: GOVERNANCE -->
+                        <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
+                            <h3 class="text-sm font-bold text-[#0b2f4c] tracking-wider mb-4 font-mono-code uppercase">
+                                GOVERNANCE
+                            </h3>
+                            <ul class="space-y-3 text-xs md:text-[13px] text-slate-700 font-medium">
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span>2 tags</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span>15 rules</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-slate-900">•</span>
+                                    <span>3 policies</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roles Section -->
+                <div class="mt-2">
+                    <h3 class="text-base font-bold text-[#0b2f4c] mb-3">
+                        Roles
+                    </h3>
+                    <ul class="space-y-2 text-xs md:text-[13px] text-slate-800 font-medium">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-slate-900">•</span>
+                            <span><strong class="font-mono-code text-slate-900 font-semibold">DMP_LAB_ANALYST</strong>: limited on every channel</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-slate-900">•</span>
+                            <span><strong class="font-mono-code text-slate-900 font-semibold">DMP_LAB_STEWARD</strong>: no limit on programmatic fetch</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Right Side Workflow List -->
+            <section class="lg:col-span-6 flex flex-col justify-center space-y-4 py-2">
+                
+                <!-- Item 1 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        1
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Baseline</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        Show a 260-row query working before any policy
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        2
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Build</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        Create tags, rules, policies and attach them
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        3
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">UI view</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        Snowsight: 100 ok, 180 alert, 260 blocked
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        4
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">UI download</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        Download disabled at 120 rows
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        5
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Export</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        COPY INTO stage: 40 ok, 80 alert, 120 blocked
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        6
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Fetch</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        CLI: analyst blocked at 450, steward fine at 1,000
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        7
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Column</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        IBAN query blocked at 30 rows
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-circle-blue text-white font-bold text-base flex items-center justify-center shrink-0">
+                        8
+                    </div>
+                    <div class="w-28 shrink-0">
+                        <span class="font-bold text-[#0b2f4c] text-base">Audit</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium">
+                        Review violations and query history
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Slide Footer -->
+        <footer class="mt-8 pt-4 flex justify-between items-center text-xs md:text-sm font-semibold text-slate-500">
+            <div>
+                Snowflake User Group | Data Movement Policies
+            </div>
+            <div>
+                14
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
